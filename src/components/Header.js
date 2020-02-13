@@ -3,10 +3,10 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 
 
-export default function Header() {
+export default function Header(props) {
     return (
-        <AppBar>
-        <Toolbar> Arc development</Toolbar> 
+        <AppBar position="fixed">
+        <Toolbar> Arc development change</Toolbar> 
         </AppBar>
     )
 }
