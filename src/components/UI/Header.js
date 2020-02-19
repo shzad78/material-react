@@ -14,6 +14,14 @@ const useStyles = makeStyles (theme  => ({
     },
     logo: {
         height: '7em'
+    },
+    tabContainer: {
+        marginLeft: 'auto'
+    },
+    tab: {
+        ...theme.typography.tab,
+        minWidth: 10,
+        marginLeft: '25px'
     }
 })
 
@@ -29,10 +37,12 @@ export default function Header(props) {
         <Toolbar disableGutters>
         
          <img alt = "company logo" className= {classes.logo} src = {logo}/>
-         <Tabs  aria-label="simple tabs example">
-         <Tab label="Home"  />
-         <Tab label="University"  />
-         <Tab label="Language"  />
+         <Tabs  className = {classes.tabContainer}>
+         <Tab className = {classes.tab} label="Home"  />
+         <Tab className = {classes.tab} label="Services"  />
+         <Tab className = {classes.tab} label="The Revolution"  />
+         <Tab className = {classes.tab} label="About us"  />
+         <Tab className = {classes.tab} label="Contact"  />
        </Tabs>
         </Toolbar> 
         </AppBar>
