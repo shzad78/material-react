@@ -1,14 +1,24 @@
 import React from 'react';
 import { ThemeProvider } from '@material-ui/core/styles';
-import theme from './ui/Theme'
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import theme from './ui/Theme';
 import Header from './ui/Header'
 
 
 function App() {
   return (
     <ThemeProvider theme = {theme}>
+    <BrowserRouter>
     <Header />
-      Hello
+    <Switch> 
+    <Route exact path= "/" component = {()=> <div>Home</div>}/>
+    <Route exact path= "/Services" component = {()=> <div>Servies</div>}/>
+    <Route exact path= "/revolution" component = {()=> <div>Revolution</div>}/> 
+    <Route exact path= "/about" component = {()=> <div>About</div>}/>
+    <Route exact path= "/contact" component = {()=> <div>Contact</div>}/>
+    <Route exact path= "/estimate" component = {()=> <div>Estimate</div>}/>
+    </Switch >
+    </BrowserRouter>
     </ThemeProvider>
   );
 }
