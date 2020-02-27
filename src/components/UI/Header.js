@@ -56,7 +56,7 @@ export default function Header(props) {
          <Tabs  value = {value} onChange = {handleChange}
          className = {classes.tabContainer} indicatorColor = "secondary">
          <Tab className = {classes.tab} label="Home" component = {Link} to = "/" />
-         <Tab aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}
+         <Tab aria-controls="simple-menu" aria-haspopup="true" onMouseOver={handleClick}
          className = {classes.tab} label="Services" component = {Link} to = "/services" />
          <Tab className = {classes.tab} label="The Revolution" component = {Link} to = "/revolution" />
          <Tab className = {classes.tab} label="About us" component = {Link} to = "/about" />
@@ -71,6 +71,7 @@ export default function Header(props) {
         keepMounted
         open={Boolean(anchorEl)}
         onClose={handleClose}
+        MenuListProps={{onMouseLeave: handleClose}}
       >
         <MenuItem onClick={handleClose}>Profile</MenuItem>
         <MenuItem onClick={handleClose}>My account</MenuItem>
