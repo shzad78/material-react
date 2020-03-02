@@ -26,6 +26,13 @@ const useStyles = makeStyles (theme  => ({
         ...theme.typography.tab,
         minWidth: 10,
         marginLeft: '25px'
+    },
+    menu:{
+      backgroundColor: theme.palette.primary.main,
+      color:"white"
+    },
+    MenuItem:{
+      ...theme.typography.tab
     }
 })
 
@@ -72,10 +79,14 @@ export default function Header(props) {
         open={Boolean(anchorEl)}
         onClose={handleClose}
         MenuListProps={{onMouseLeave: handleClose}}
+        classes= {{paper:classes.menu}}
+        elevation={0}
       >
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
-        <MenuItem onClick={handleClose}>Logout</MenuItem>
+        
+        <MenuItem onClick={()=>{handleClose(); setValue(1)}} component = {Link} to = "/services" classes= {{root:classes.MenuItem}}>Services </MenuItem>
+        <MenuItem onClick={()=>{handleClose(); setValue(1)}} component = {Link} to = "/profile" classes= {{root:classes.MenuItem}}>Profile</MenuItem>
+        <MenuItem onClick={()=>{handleClose(); setValue(1)}} component = {Link} to = "/account" classes= {{root:classes.MenuItem}}>My account</MenuItem>
+        <MenuItem onClick={()=>{handleClose(); setValue(1)}} component = {Link} to = "/logout" classes= {{root:classes.MenuItem}}>Logout</MenuItem>
       </Menu>
         </Toolbar> 
         </AppBar>
