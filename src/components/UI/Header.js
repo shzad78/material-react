@@ -43,6 +43,19 @@ export default function Header(props) {
     const classes = useStyles()
     const [value, setValue] = useState (1);
     const [anchorEl, setAnchorEl ] = useState(null);
+    const [selectedIndex, setSelectedIndex]=useState(0);
+    const menuOptions = [
+      {name: "Services", link: "/services"},
+      {name: "Custom Software Development", link: "/customsoftware"},
+      {name: "Mobile App Development", link: "/mobileapp"},
+      {name: "Website Development", link: "/webdevelopment"}
+      
+    ]
+
+    const handleMenuItemClick = (e, i)=>{
+      setAnchorEl(null);
+      setSelectedIndex(i)
+    }
     const handleChange = (e, value) => {
         setValue (value)
     }
@@ -83,11 +96,14 @@ export default function Header(props) {
         elevation={0}
       >
         
-        <MenuItem onClick={()=>{handleClose(); setValue(1)}} component = {Link} to = "/services" classes= {{root:classes.MenuItem}}>Services </MenuItem>
-        <MenuItem onClick={()=>{handleClose(); setValue(1)}} component = {Link} to = "/profile" classes= {{root:classes.MenuItem}}>Profile</MenuItem>
-        <MenuItem onClick={()=>{handleClose(); setValue(1)}} component = {Link} to = "/account" classes= {{root:classes.MenuItem}}>My account</MenuItem>
-        <MenuItem onClick={()=>{handleClose(); setValue(1)}} component = {Link} to = "/logout" classes= {{root:classes.MenuItem}}>Logout</MenuItem>
-      </Menu>
+        
+        {menuOptions.map((option, i)=> (
+            <MenuItem key= {option} component = {Link} to = {option.link} classes= {{root:classes.MenuItem}} 
+            onClick = {(e, i)=>{handleMenuItemClick(e); setValue(1)}}  selected = {i===selectedIndex && value === 1} >
+            {option.name}
+            </MenuItem>
+         ) )}
+        </Menu>
         </Toolbar> 
         </AppBar>
         <div className ={classes.toolbarMargin}/>

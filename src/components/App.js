@@ -18,10 +18,10 @@ function App() {
     <Route exact path= "/contact" component = {()=> <div>Contact</div>}/>
     <Route exact path= "/estimate" component = {()=> <div>Estimate</div>}/>
     <Route exact path= "/software" component = {()=> <div>Custom Software</div>}/>
-    <Route exact path= "/web" component = {()=> <div>Web Development</div>}/>
-    <Route exact path= "/apps" component = {()=> <div>Android Apps</div>}/>
+    <Route exact path= "/webdevelopment" component = {()=> <div>Web Development</div>}/>
+    <Route exact path= "/mobileapp" component = {()=> <div>Mobile App Development</div>}/>
     <Route exact path= "/profile" component = {()=> <div>Profile </div>}/>
-    <Route exact path= "/logout" component = {()=> <div> Logout</div>}/>
+    <Route exact path= "/customsoftware" component = {()=> <div> Custom Software</div>}/>
     <Route exact path= "/account" component = {()=> <div> My Account</div>}/>
 
     </Switch >
