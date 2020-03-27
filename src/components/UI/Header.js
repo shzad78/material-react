@@ -8,6 +8,8 @@ import Button from '@material-ui/core/Button';
 import {Link} from 'react-router-dom';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import {useTheme} from '@material-ui/core/styles';
 
 import logo from '../../assets/logo.svg';
 
@@ -40,7 +42,9 @@ const useStyles = makeStyles (theme  => ({
 
 export default function Header(props) {
 
-    const classes = useStyles()
+    const classes = useStyles();
+    const theme = useTheme();
+    const matches = useMediaQuery(theme.breakpoints.down('md'));
     const [value, setValue] = useState (1);
     const [anchorEl, setAnchorEl ] = useState(null);
     const [selectedIndex, setSelectedIndex]=useState(0);
@@ -66,14 +70,9 @@ export default function Header(props) {
       const handleClose = () => {
         setAnchorEl(null);
       };
-    
-    return (
+      const tabs = (
         <React.Fragment>
-        <AppBar position="fixed">
-        <Toolbar disableGutters>
-        
-         <img alt = "company logo" className= {classes.logo} src = {logo}/>
-         <Tabs  value = {value} onChange = {handleChange}
+        <Tabs  value = {value} onChange = {handleChange}
          className = {classes.tabContainer} indicatorColor = "secondary">
          <Tab className = {classes.tab} label="Home" component = {Link} to = "/" />
          <Tab aria-controls="simple-menu" aria-haspopup="true" onMouseOver={handleClick}
@@ -104,6 +103,17 @@ export default function Header(props) {
             </MenuItem>
          ) )}
         </Menu>
+        </React.Fragment>
+      )
+       
+    
+      return (
+        <React.Fragment>
+        <AppBar position="fixed">
+        <Toolbar disableGutters>
+        
+         <img alt = "company logo" className= {classes.logo} src = {logo}/>
+         {matches ? null : tabs}
         </Toolbar> 
         </AppBar>
         <div className ={classes.toolbarMargin}/>
